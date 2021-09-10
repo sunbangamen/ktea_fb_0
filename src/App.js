@@ -3,13 +3,15 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { authService } from "./services/firebase";
 
 import Chat from "./pages/Chat";
-import SignUp from "./pages/SignUp";
-import Login from "./pages/Login";
+// import SignUp from "./pages/SignUp";
+// import Login from "./pages/Login";
 import PublicRoute from "./components/PublicRoute";
 import PrivateRoute from "./components/PrivateRoute";
 // import LineChart from "./pages/LineChart";
 import Chart from "./pages/Chart";
 import ChartOne from "./pages/ChartOne";
+import SignIn from "./material/sign/SignIn";
+import SignUp from "./material/sign/SignUp";
 
 const initialState = {
   authenticated: false,
@@ -50,8 +52,10 @@ function App() {
       <Switch>
         <PrivateRoute path="/chat" authenticated={authenticated} component={Chat} />
         <PrivateRoute path="/chart" authenticated={authenticated} component={ChartOne} />
+        {/* <PublicRoute path="/signup" authenticated={authenticated} component={SignUp} /> */}
         <PublicRoute path="/signup" authenticated={authenticated} component={SignUp} />
-        <PublicRoute path={["/", "/login"]} authenticated={authenticated} component={Login} />
+        {/* <PublicRoute path={["/", "/login"]} authenticated={authenticated} component={Login} /> */}
+        <PublicRoute path={["/", "/login"]} authenticated={authenticated} component={SignIn} />
       </Switch>
     </Router>
   );
